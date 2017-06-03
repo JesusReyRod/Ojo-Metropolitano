@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ojo Metropolitano</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">1569931526390323</string>
+    <string name="title_activity_opciones_principal">opciones_principal</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="Correo">Correo</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
