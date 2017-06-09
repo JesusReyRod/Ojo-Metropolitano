@@ -75,7 +75,7 @@ public class opciones_principal extends AppCompatActivity
     public EditText myText;
     String fileName = "Coordenadas.txt";
     public GoogleMap mMap;
-    double posX, posY;
+    public double posX, posY;
     static String Test;
     public static int IdUsuario;
     public static String Nombre, ApellidoM, ApellidoP, Correo;
@@ -212,10 +212,60 @@ public class opciones_principal extends AppCompatActivity
             try {
                 Log.i("Lista en X", String.valueOf(myLoca.coordenada_x));
                 Log.i("Lista en Y", String.valueOf(myLoca.coordenada_y));
-                mPrueba = mMap.addMarker(new MarkerOptions()
+
+                if(myLoca.tipo == 1){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Robo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                }
+                if(myLoca.tipo == 2){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Asalto")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }
+                if(myLoca.tipo == 3){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Acoso")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                }
+                if(myLoca.tipo == 4){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Vandalismo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                }
+                if(myLoca.tipo == 5){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Pandillerismo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                }
+                if(myLoca.tipo == 6){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Violación")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+                }
+                if(myLoca.tipo == 7){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Secuestro o Tentativa")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                }
+                if(myLoca.tipo == 8){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Asesinato")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                }
+
+               /* mPrueba = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
                         .title("Hello world")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));*/
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(opciones_principal.this, "No hay reportes cercanos", Toast.LENGTH_LONG).show();
@@ -437,10 +487,60 @@ public class opciones_principal extends AppCompatActivity
             try {
                 Log.i("Lista en X", String.valueOf(myLoca.coordenada_x));
                 Log.i("Lista en Y", String.valueOf(myLoca.coordenada_y));
-                mPrueba = mMap.addMarker(new MarkerOptions()
+
+                if(myLoca.tipo == 1){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Robo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                }
+                if(myLoca.tipo == 2){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Asalto")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }
+                if(myLoca.tipo == 3){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Acoso")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                }
+                if(myLoca.tipo == 4){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Vandalismo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                }
+                if(myLoca.tipo == 5){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Pandillerismo")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                }
+                if(myLoca.tipo == 6){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Violación")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+                }
+                if(myLoca.tipo == 7){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Secuestro o Tentativa")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                }
+                if(myLoca.tipo == 8){
+                    mPrueba = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
+                            .title("Asesinato")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                }
+
+               /* mPrueba = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
                         .title("Hello world")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));*/
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(opciones_principal.this, "No hay reportes cercanos", Toast.LENGTH_LONG).show();

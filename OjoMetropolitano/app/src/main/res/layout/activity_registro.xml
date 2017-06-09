@@ -30,7 +30,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:id="@+id/scrollView2">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,50 +53,11 @@
                 android:textColor="#FFFFCC"
                 android:textColorHighlight="#FF00CC"
                 android:textColorHint="#FFFFCC"
-                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
-            <EditText
-                android:id="@+id/contra"
-                android:password="true"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="78dp"
-                android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:textAlignment="center"
-                android:textColor="#FFFFCC"
-                android:textColorHighlight="#FF00CC"
-                android:textColorHint="#ffffffff"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/phone"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="136dp"
-                android:ems="10"
-                android:hint="Télefono"
-                android:inputType="phone"
-                android:textAlignment="center"
-                android:textColor="#FFFFCC"
-                android:textColorHint="#FFFFCC"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/correo"
@@ -105,14 +67,13 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="193dp"
+                android:layout_marginTop="211dp"
                 android:ems="10"
                 android:hint="Correo"
                 android:inputType="textEmailAddress"
                 android:textAlignment="center"
                 android:textColor="#FFFFCC"
                 android:textColorHint="#FFFFCC"
-                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -125,14 +86,13 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="252dp"
+                android:layout_marginTop="262dp"
                 android:ems="10"
                 android:hint="Nombre(s) Opc."
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textColor="#FFFFCC"
                 android:textColorHint="#FFFFCC"
-                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -145,14 +105,13 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="311dp"
+                android:layout_marginTop="309dp"
                 android:ems="10"
-                android:hint="Apellido paterno"
+                android:hint="Apellido paterno (opcional)"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textColor="#FFFFCC"
                 android:textColorHint="#FFFFCC"
-                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -165,10 +124,77 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="369dp"
+                android:layout_marginTop="358dp"
                 android:ems="10"
-                android:hint="Apellido materno"
+                android:hint="Apellido materno (opcional)"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="#FFFFCC"
+                android:textColorHint="#FFFFCC"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="487dp"
+                android:background="@drawable/corner_radius"
+                android:text="Registrarse"
+                android:textColor="#FFFFCC"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/contra2"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="111dp"
+                android:ems="10"
+                android:hint="Confirmar contraseña"
+                android:inputType="text|textPassword"
+                android:textAlignment="center"
+                android:textColor="#FFFFCC"
+                android:textColorHint="#FFFFCC"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/contra"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="64dp"
+                android:hint="Contraseña"
+                android:inputType="text|textPassword"
+                android:textAlignment="center"
+                android:textColor="#FFFFCC"
+                android:textColorHint="#FFFFCC"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="161dp"
+                android:ems="10"
+                android:hint="Teléfono"
+                android:inputType="phone"
                 android:textAlignment="center"
                 android:textColor="#FFFFCC"
                 android:textColorHint="#FFFFCC"
@@ -177,21 +203,9 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="452dp"
-                android:text="Registrarse"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
 

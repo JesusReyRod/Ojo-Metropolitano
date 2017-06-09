@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,9 +21,9 @@ import java.net.URL;
 
 public class Registro extends AppCompatActivity {
 
-    EditText namUser, nombre, ape1, ape2, pass, phone, mail;
+    EditText namUser, nombre, ape1, ape2, pass, pass2, phone, mail;
 
-    String var1, var2, var3, var4, var5, var6, var7;
+    String var1, var2, var3, var4, var5, var5_1, var6, var7;
     String fileName = "TokenUnico.txt";
     String texto;
 
@@ -33,7 +34,7 @@ public class Registro extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         leerTXT();
         pass = (EditText)findViewById(R.id.contra);
-        pass.setKeyListener(DigitsKeyListener.getInstance("ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz1234567890"));
+        pass.setKeyListener(DigitsKeyListener.getInstance("ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz1234567890"));;
 
        Button send = (Button) findViewById(R.id.send);
 
@@ -80,6 +81,9 @@ public class Registro extends AppCompatActivity {
 
         pass = (EditText)findViewById(R.id.contra);
         var5 = pass.getText().toString();
+
+        pass2 = (EditText)findViewById(R.id.contra2);
+        var5_1 = pass2.getText().toString();
 
         phone = (EditText)findViewById(R.id.phone);
         var6 = phone.getText().toString();
