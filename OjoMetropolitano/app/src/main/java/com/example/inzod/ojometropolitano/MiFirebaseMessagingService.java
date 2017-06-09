@@ -37,6 +37,7 @@ public class MiFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Data: " + remoteMessage.getData());
         }
+
     }
 
     private void mostrarNotificacion(String title, String body) {

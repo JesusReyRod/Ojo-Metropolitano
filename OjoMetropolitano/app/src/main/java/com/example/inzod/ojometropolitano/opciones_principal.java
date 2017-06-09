@@ -75,7 +75,7 @@ public class opciones_principal extends AppCompatActivity
     public EditText myText;
     String fileName = "Coordenadas.txt";
     public GoogleMap mMap;
-    public double posX, posY;
+    double posX, posY;
     static String Test;
     public static int IdUsuario;
     public static String Nombre, ApellidoM, ApellidoP, Correo;
@@ -202,16 +202,13 @@ public class opciones_principal extends AppCompatActivity
         });
         //miUbicacion();
     }
-    //MarcadoresGlobales
+
     private void MarcadoresGlobaels()
     {
         Leer(fileName,true);
 
         for (Coordenadas myLoca : myList) {
             try {
-                Log.i("Lista en X", String.valueOf(myLoca.coordenada_x));
-                Log.i("Lista en Y", String.valueOf(myLoca.coordenada_y));
-
                 if(myLoca.tipo == 1){
                     mPrueba = mMap.addMarker(new MarkerOptions()
                             .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
@@ -260,8 +257,7 @@ public class opciones_principal extends AppCompatActivity
                             .title("Asesinato")
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                 }
-
-               /* mPrueba = mMap.addMarker(new MarkerOptions()
+                /*mPrueba = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
                         .title("Hello world")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));*/
@@ -447,12 +443,8 @@ public class opciones_principal extends AppCompatActivity
     private void misMarcadores()
     {
         Leer("myPlaces.txt",false);
-
         for (Coordenadas myLoca : myPlaces) {
             try {
-                Log.i("Lista en X", String.valueOf(myLoca.coordenada_x));
-                Log.i("Lista en Y", String.valueOf(myLoca.coordenada_y));
-
                 if(myLoca.tipo == 1){
                     mPrueba = mMap.addMarker(new MarkerOptions()
                             .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
@@ -501,11 +493,6 @@ public class opciones_principal extends AppCompatActivity
                             .title("Asesinato")
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
                 }
-
-               /* mPrueba = mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(myLoca.coordenada_x, myLoca.coordenada_y))
-                        .title("Hello world")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));*/
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(opciones_principal.this, "No hay reportes cercanos", Toast.LENGTH_LONG).show();
