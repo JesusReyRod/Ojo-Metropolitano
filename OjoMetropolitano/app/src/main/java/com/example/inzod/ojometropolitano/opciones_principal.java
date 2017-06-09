@@ -98,10 +98,7 @@ public class opciones_principal extends AppCompatActivity
         ApellidoP = getIntent().getExtras().getString("ApellidoP");
         ApellidoM = getIntent().getExtras().getString("ApellidoM");
 
-
         miUbicacion();
-
-        Toast.makeText(getApplicationContext(), String.valueOf(IdUsuario), Toast.LENGTH_LONG).show();
 
         Inicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +134,7 @@ public class opciones_principal extends AppCompatActivity
         agente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent agen = new Intent(opciones_principal.this, Agente_Policiaco.class);
+                Intent agen = new Intent(opciones_principal.this, descripcion_delito.class);
                 startActivity(agen);
             }
         });
@@ -145,12 +142,14 @@ public class opciones_principal extends AppCompatActivity
         reporte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final LatLng pos = mPrueba.getPosition();
-                new Thread(new Runnable() {
-                    public void run() {
-                        levantarReporte(pos);
-                    }
-                }).start();
+                LatLng pos = mPrueba.getPosition();
+                Intent des_del = new Intent(opciones_principal.this, descripcion_delito.class);
+                des_del.putExtra("IdUsuario",IdUsuario);
+                des_del.putExtra("PosicionDelX",pos.latitude);
+                des_del.putExtra("PosicionDelY",pos.longitude);
+                des_del.putExtra("PosicionActX",posX);
+                des_del.putExtra("PosicionActY",posY);
+                startActivity(des_del);
                 reporte.setVisibility(View.INVISIBLE);
             }
         });
@@ -395,40 +394,6 @@ public class opciones_principal extends AppCompatActivity
         }
     }
 
-
-    //Envia URL al servidor con reportes
-    public void levantarReporte(LatLng Pos)
-    {
-        String coordX = String.valueOf(Pos.latitude);
-        String coordY = String.valueOf(Pos.longitude);
-
-        int respuesta;
-        StringBuilder result;
-        String linea;
-        URL url;
-        try {
-            url = new URL("http://www.siliconbear.mx/flumina/RI.php?redactor="+String.valueOf(IdUsuario)+"&tipo=3&coordx="+coordX+"&coordy="+coordY+"&fechor=2017-05-07_15:36:38&desc=Test&evid=987654321&ubiact="+posX+","+posY);
-            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-            conexion.setRequestMethod("GET");
-            respuesta = conexion.getResponseCode();
-
-            result = new StringBuilder();
-
-            if(respuesta == HttpURLConnection.HTTP_OK)
-            {
-                InputStream in = new BufferedInputStream(conexion.getErrorStream());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                while((linea=reader.readLine()) != null)
-                {
-                    result .append(linea);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void misMarcadores()
     {
         Leer("myPlaces.txt",false);
@@ -525,7 +490,6 @@ public class opciones_principal extends AppCompatActivity
         if (id == R.id.nav_report) {
             mMap.clear();
             reporte.setVisibility(View.VISIBLE);
-            //miUbicacion();
             agregarMarcador(posX, posY);
         } else if (id == R.id.nav_mLugares) {
             new Thread(new Runnable() {
@@ -537,7 +501,6 @@ public class opciones_principal extends AppCompatActivity
                         public void run() {
                             mMap.clear();
                             misMarcadores();
-                            //Toast.makeText(opciones_principal.this,Test, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
