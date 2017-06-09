@@ -134,7 +134,7 @@ public class opciones_principal extends AppCompatActivity
         agente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent agen = new Intent(opciones_principal.this, descripcion_delito.class);
+                Intent agen = new Intent(opciones_principal.this, Agente_Policiaco.class);
                 startActivity(agen);
             }
         });
