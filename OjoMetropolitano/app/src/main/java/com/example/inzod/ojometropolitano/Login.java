@@ -75,6 +75,7 @@ public class Login extends AppCompatActivity {
                                     i.putExtra("Nombre",Nombre);
                                     i.putExtra("ApellidoP",ApellidoP);
                                     i.putExtra("ApellidoM",ApellidoM);
+
                                     startActivity(i);
                                 }
                                 else
@@ -109,6 +110,7 @@ public class Login extends AppCompatActivity {
         Log.i("Cadena", url);
         info = new StringTokenizer(url, "|");
         info.nextToken();
+
         IdUsuario = Integer.parseInt(info.nextToken());
         Correo = info.nextToken();
         Nombre = info.nextToken();

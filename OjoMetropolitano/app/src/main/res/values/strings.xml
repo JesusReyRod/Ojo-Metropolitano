@@ -10,4 +10,15 @@
     <string name="Correo">Correo</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="tipos_delito">
+        <item>Robo</item>
+        <item>Asalto</item>
+        <item>Acoso</item>
+        <item>Vandalismo</item>
+        <item>Pandillerismo</item>
+        <item>Violacion</item>
+        <item>Secuestro o tentativa</item>
+        <item>Asesinato</item>
+    </string-array>
 </resources>

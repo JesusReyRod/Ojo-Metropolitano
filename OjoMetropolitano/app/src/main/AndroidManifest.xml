@@ -85,9 +85,13 @@
         <activity
             android:name=".Registro"
             android:label="Registro" />
+<<<<<<< HEAD
         <activity
             android:name=".Editar_Perfil"
             android:label="Editar Perfil"></activity>
+=======
+        <activity android:name=".Editar_Perfil" />
+>>>>>>> origin/master
 
         <service android:name=".MiFirebaseMessagingService">
             <intent-filter>
@@ -100,8 +104,12 @@
             </intent-filter>
         </service>
 
+<<<<<<< HEAD
         <activity android:name=".Agregar_Contacto"
             android:label="Agregar Contacto"></activity>
+=======
+        <activity android:name=".descripcion_delito"></activity>
+>>>>>>> origin/master
     </application>
 
 </manifest>
