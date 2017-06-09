@@ -202,7 +202,7 @@ public class opciones_principal extends AppCompatActivity
         });
         //miUbicacion();
     }
-
+    //MarcadoresGlobales
     private void MarcadoresGlobaels()
     {
         Leer(fileName,true);
