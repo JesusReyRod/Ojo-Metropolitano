@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Agregar"
+        android:title="Agregar lugar"
+        android:orderInCategory="100"
+        />
+    <!--
+    <item
+        android:id="@+id/Eliminar"
+        android:title="Eliminar lugar"
+        android:orderInCategory="100"
+        />
+
+    <item
+        android:id="@+id/Modificar"
+        android:title="Modificar lugar"
+        android:orderInCategory="100"
+        />
+        -->
+</menu>

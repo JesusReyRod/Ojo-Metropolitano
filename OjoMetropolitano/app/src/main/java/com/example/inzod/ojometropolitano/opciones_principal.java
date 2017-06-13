@@ -127,6 +127,7 @@ public class opciones_principal extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent place = new Intent(opciones_principal.this, Mis_Lugares.class);
+                place.putExtra("IdUsuario",IdUsuario);
                 startActivity(place);
             }
         });
@@ -135,6 +136,9 @@ public class opciones_principal extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent agen = new Intent(opciones_principal.this, Agente_Policiaco.class);
+                agen.putExtra("IdUsuario",IdUsuario);
+                agen.putExtra("PosicionActX",posX);
+                agen.putExtra("PosicionActY",posY);
                 startActivity(agen);
             }
         });
@@ -151,6 +155,8 @@ public class opciones_principal extends AppCompatActivity
                 des_del.putExtra("PosicionActY",posY);
                 startActivity(des_del);
                 reporte.setVisibility(View.INVISIBLE);
+                mPrueba.remove();
+                MarcadoresGlobaels();
             }
         });
 
@@ -299,7 +305,7 @@ public class opciones_principal extends AppCompatActivity
 
         }
     };
-    //Agrega marcador dobre posicion
+    //Agrega marcador aobre posicion
     private void agregarMarcador(double lat, double lon) {
         LatLng coord = new LatLng(lat, lon);
         CameraUpdate miUbi = CameraUpdateFactory.newLatLngZoom(coord, 16);
@@ -307,7 +313,7 @@ public class opciones_principal extends AppCompatActivity
         mPrueba = mMap.addMarker(new MarkerOptions()
                 .position(coord)
                 .title("Reporte")
-                .snippet("Asalto"));
+                .snippet("Reportar"));
         mPrueba.setDraggable(true);
         mPrueba.setTag(0);
         mMap.animateCamera(miUbi);
@@ -593,7 +599,7 @@ public class opciones_principal extends AppCompatActivity
                 }
             }).start();
 
-        } else if (id == R.id.nav_slideshow) {
+        }/* else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
@@ -601,7 +607,7 @@ public class opciones_principal extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
