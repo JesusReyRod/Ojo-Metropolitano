@@ -61,29 +61,41 @@ public class Login extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        final String resultado = Loguear(usuario.getText().toString(), pass.getText().toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if(resultado.length() > 4 )
-                                {
-                                    limpiarCadea(resultado);
+                        final String resultado;
+                        if (InterConnect()) {
+                            resultado = Loguear(usuario.getText().toString(), pass.getText().toString());
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(resultado.length() > 4 )
+                                    {
+                                        limpiarCadea(resultado);
 
-                                    Intent i = new Intent(getApplicationContext(),opciones_principal.class);
-                                    i.putExtra("IdUsuario",IdUsuario);
-                                    i.putExtra("Correo",Correo);
-                                    i.putExtra("Nombre",Nombre);
-                                    i.putExtra("ApellidoP",ApellidoP);
-                                    i.putExtra("ApellidoM",ApellidoM);
+                                        Intent i = new Intent(getApplicationContext(), opciones_principal.class);
+                                        i.putExtra("IdUsuario", IdUsuario);
+                                        i.putExtra("Correo", Correo);
+                                        i.putExtra("Nombre", Nombre);
+                                        i.putExtra("ApellidoP", ApellidoP);
+                                        i.putExtra("ApellidoM", ApellidoM);
+                                        startActivity(i);
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos" , Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+                        else
+                        {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(),"No hay conexión a internet" , Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
 
-                                    startActivity(i);
-                                }
-                                else
-                                {
-                                    Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrectos" , Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
                     }
                 }).start();
             }
@@ -92,10 +104,37 @@ public class Login extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logut = new Intent(Login.this, Registro.class);
-                startActivity(logut);
+                if(InterConnect()) {
+                    Intent logut = new Intent(Login.this, Registro.class);
+                    startActivity(logut);
+                }
+                else
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),"No hay conexión a internet", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
+    }
+
+    public Boolean InterConnect() {
+
+        try {
+            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+
+            int val = p.waitFor();
+            boolean reachable = (val == 0);
+            return reachable;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void limpiarCadea (String url){

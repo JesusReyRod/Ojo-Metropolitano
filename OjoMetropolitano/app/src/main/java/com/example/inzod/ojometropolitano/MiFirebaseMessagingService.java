@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
@@ -42,20 +44,22 @@ public class MiFirebaseMessagingService extends FirebaseMessagingService {
 
     private void mostrarNotificacion(String title, String body) {
 
-        Intent intent = new Intent(this, opciones_principal.class);
+        Intent intent = new Intent(this, Mis_Lugares.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setLargeIcon(bmp)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
-                .setSound(soundUri)
-                .setContentIntent(pendingIntent);
-
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setVibrate(new long[]{0, 300, 200, 300})
+                .setSound(soundUri)/*.setContentIntent(pendingIntent)*/;
+        notificationBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationBuilder.build());
 

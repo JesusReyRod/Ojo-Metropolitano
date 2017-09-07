@@ -21,24 +21,27 @@
         android:layout_marginTop="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/image1" />
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="244dp"
+        android:layout_height="245dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/button2"
         android:text="Boton de panico"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
+
 </android.support.constraint.ConstraintLayout>

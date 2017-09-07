@@ -1,9 +1,11 @@
 package com.example.inzod.ojometropolitano;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +49,7 @@ import java.util.Scanner;
 import static com.example.inzod.ojometropolitano.R.id.button;
 import static com.example.inzod.ojometropolitano.R.id.map;
 import static com.example.inzod.ojometropolitano.R.id.map2;
+import static com.example.inzod.ojometropolitano.R.id.visible;
 
 public class Mis_Lugares extends AppCompatActivity{
 
@@ -55,6 +59,7 @@ public class Mis_Lugares extends AppCompatActivity{
     private EditText nombre;
     private ListView lugares;
     private Button agregar;
+    private Button cerrar;
     int IdUsuario;
     String ver;
     List<Lugares> myPlaces = new ArrayList<>();
@@ -69,6 +74,8 @@ public class Mis_Lugares extends AppCompatActivity{
         nombre = (EditText) findViewById(R.id.editText5);
         lugares = (ListView) findViewById(R.id.listView);
         agregar = (Button) findViewById(R.id.button10);
+        cerrar = (Button) findViewById(R.id.button12);
+        final ListView lv = (ListView)findViewById(R.id.listView);
 
         ((SupportMapFragment) getSupportFragmentManager().findFragmentById(map2)).getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -107,6 +114,31 @@ public class Mis_Lugares extends AppCompatActivity{
                         AgregarLugar(Pos);
                     }
                 }).start();
+                mMapFragment.getView().setVisibility(view.INVISIBLE);
+                mMap.clear();
+                nombre.setVisibility(View.GONE);
+                agregar.setVisibility(View.GONE);
+                refrescarLista();
+            }
+        });
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMapFragment.getView().setVisibility(view.INVISIBLE);
+                mMap.clear();
+                cerrar.setVisibility(View.GONE);
+                lugares.setVisibility(View.VISIBLE);
+            }
+        });
+
+        lugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Lugares lugar= myPlaces.get(position);
+                mMapFragment.getView().setVisibility(View.VISIBLE);
+                cerrar.setVisibility(View.VISIBLE);
+                agregarMarcadorLugar(lugar.x, lugar.y, lugar.Nombre);
+                lugares.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -118,10 +150,31 @@ public class Mis_Lugares extends AppCompatActivity{
                     @Override
                     public void run() {
                         Leer();
-                        ListView lv = (ListView)findViewById(R.id.listView);
                         ArrayAdapter<String> myarrayAdapter = new ArrayAdapter<String>(Mis_Lugares.this, android.R.layout.simple_list_item_1, nombresLug);
                         lv.setAdapter(myarrayAdapter);
                         lv.setTextFilterEnabled(true);
+                    }
+                });
+            }
+        }).start();
+    }
+
+    public void refrescarLista()
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final ListView lv = (ListView)findViewById(R.id.listView);
+                obtenerLugares();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Leer();
+                        ArrayAdapter<String> myarrayAdapter = new ArrayAdapter<String>(Mis_Lugares.this, android.R.layout.simple_list_item_1, nombresLug);
+                        lv.setAdapter(myarrayAdapter);
+                        lv.setTextFilterEnabled(true);
+                        myarrayAdapter.notifyDataSetChanged();
+                        lv.setVisibility(View.VISIBLE);
                     }
                 });
             }
@@ -162,6 +215,7 @@ public class Mis_Lugares extends AppCompatActivity{
             Double x, y;
             String Nom;
             myPlaces.clear();
+            nombresLug.clear();
             read.next();
             read.next();
             read.next();
@@ -227,6 +281,15 @@ public class Mis_Lugares extends AppCompatActivity{
         mPrueba.setDraggable(true);
         mPrueba.setTag(0);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mPrueba.getPosition(), 10));
+    }
+
+    void agregarMarcadorLugar(double x, double y, String Nombre)
+    {
+        mPrueba = mMap.addMarker(new MarkerOptions()
+                .position(new LatLng(x, y)));
+        mPrueba.setTitle(Nombre);
+        mPrueba.setTag(0);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mPrueba.getPosition(), 16));
     }
 
     @Override
