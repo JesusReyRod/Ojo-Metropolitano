@@ -7,16 +7,26 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.facebook.FacebookSdk;
 
 public class Perfil extends AppCompatActivity {
 
+    Login mylog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                TextView myUser = (TextView)findViewById(R.id.UserName);
+                myUser.setText(mylog.Nombre);
+            }
+        }).start();
     }
 
     @Override
@@ -45,15 +55,4 @@ public class Perfil extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /*@Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
-        if (keyCode == event.KEYCODE_BACK) {
-            this.finish();
-        }
-        return super.onKeyDown(keyCode, event);
-    }*/
-
-
 }

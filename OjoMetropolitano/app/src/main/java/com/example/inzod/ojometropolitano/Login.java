@@ -124,7 +124,7 @@ public class Login extends AppCompatActivity {
     public Boolean InterConnect() {
 
         try {
-            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            Process p = java.lang.Runtime.getRuntime().exec("ping -c 1 www.siliconbear.mx");
 
             int val = p.waitFor();
             boolean reachable = (val == 0);
