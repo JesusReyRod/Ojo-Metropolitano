@@ -119,6 +119,11 @@ public class opciones_principal extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent conta = new Intent(opciones_principal.this, Contactos.class);
+                conta.putExtra("IdUsuario", IdUsuario);
+                conta.putExtra("Correo", Correo);
+                conta.putExtra("Nombre", Nombre);
+                conta.putExtra("ApellidoP", ApellidoP);
+                conta.putExtra("ApellidoM", ApellidoM);
                 startActivity(conta);
             }
         });
