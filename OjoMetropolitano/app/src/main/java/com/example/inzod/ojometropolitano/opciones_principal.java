@@ -78,7 +78,7 @@ public class opciones_principal extends AppCompatActivity
     double posX, posY;
     static String Test;
     public static int IdUsuario;
-    public static String Nombre, ApellidoM, ApellidoP, Correo;
+    public static String Nombre, ApellidoM, ApellidoP, Correo, User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +97,7 @@ public class opciones_principal extends AppCompatActivity
         Nombre = getIntent().getExtras().getString("Nombre");
         ApellidoP = getIntent().getExtras().getString("ApellidoP");
         ApellidoM = getIntent().getExtras().getString("ApellidoM");
+        User = getIntent().getExtras().getString("User");
 
         miUbicacion();
 
@@ -124,6 +125,7 @@ public class opciones_principal extends AppCompatActivity
                 conta.putExtra("Nombre", Nombre);
                 conta.putExtra("ApellidoP", ApellidoP);
                 conta.putExtra("ApellidoM", ApellidoM);
+                conta.putExtra("User",User);
                 startActivity(conta);
             }
         });

@@ -27,7 +27,7 @@ import java.util.StringTokenizer;
 public class Login extends AppCompatActivity {
 
     public static int IdUsuario;
-    public static String Nombre, ApellidoM, ApellidoP, Correo;
+    public static String Nombre, ApellidoM, ApellidoP, Correo, User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +64,11 @@ public class Login extends AppCompatActivity {
                         final String resultado;
                         if (InterConnect()) {
                             resultado = Loguear(usuario.getText().toString(), pass.getText().toString());
+                            User = usuario.getText().toString();
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if(resultado.length() > 4 )
+                                    if(resultado.length() > 11 )
                                     {
                                         limpiarCadea(resultado);
 
@@ -77,6 +78,7 @@ public class Login extends AppCompatActivity {
                                         i.putExtra("Nombre", Nombre);
                                         i.putExtra("ApellidoP", ApellidoP);
                                         i.putExtra("ApellidoM", ApellidoM);
+                                        i.putExtra("User",usuario.getText().toString());
                                         startActivity(i);
                                     }
                                     else

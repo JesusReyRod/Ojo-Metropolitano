@@ -32,7 +32,7 @@ public class Contactos extends AppCompatActivity {
     private EditText myEditTXT;
     private Button btn;
     Login myLogin;
-    String user = myLogin.Nombre;
+    String user = myLogin.User;
     String x,y;
 
     @Override
@@ -70,7 +70,12 @@ public class Contactos extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Solicitar_Ubicacion(user,destinatario);
-                                        Toast.makeText(Contactos.this,"Notificación enviada Exitosamente", Toast.LENGTH_LONG).show();
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(Contactos.this,"Notificación enviada Exitosamente", Toast.LENGTH_LONG).show();
+                                            }
+                                        });
                                     }
                                 }).start();
                                 break;
